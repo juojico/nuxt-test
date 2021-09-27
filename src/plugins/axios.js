@@ -14,15 +14,13 @@ export default function({ $axios, store, redirect }) {
   // setHeader
   $axios.setHeader('content-type', 'application/json');
 
-  let token = store.getters['userModules/token'];
+  let token = store.getters['user/token'];
   if (token) {
     $axios.setHeader('Authorization', 'Bearer ' + token);
   }
 
   // onRequest
-  $axios.onRequest(config => {
-    console.log('Making request to ' + config.url);
-  });
+  $axios.onRequest(config => {});
 
   // onResponse
   $axios.onResponse(response => {

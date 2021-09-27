@@ -4,9 +4,9 @@ import Vue from 'vue';
 import { BASE_URL } from '@/plugins/axios';
 
 export const logout = type => {
-  // store.commit('userModules/CLEAR_LOGIN_TOKEN');
+  // store.commit('user/CLEAR_LOGIN_TOKEN');
   if (type === 'userClick') {
-    $api('userLogout');
+    // $api('userLogout');
     // router.replace('/');
     Message.success('帳號已登出');
   } else if (type === 'reset') {
@@ -15,14 +15,14 @@ export const logout = type => {
 };
 
 export const loginFirst = callback => {
-  // let token = store.getters['userModules/token'];
+  // let token = store.getters['user/token'];
   let token;
 
   if (!token) {
     return MessageBox('尚未登入, 請先登入', '', {
       type: 'warning',
     }).then(() => {
-      // store.commit('dialogModules/SET_LOGIN_SHOW', true);
+      // store.commit('dialog/SET_LOGIN_SHOW', true);
     });
   }
   callback();
@@ -135,7 +135,7 @@ export const fileUpload = function(url, para, callback) {
     formData.append('type', para.type);
   }
 
-  // let token = store.getters['userModules/token'];
+  // let token = store.getters['user/token'];
   let token;
   axios
     .post(`${BASE_URL}${url}`, formData, {

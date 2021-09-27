@@ -1,10 +1,38 @@
 <template>
   <div>
-    <Tutorial />
-    <NuxtLink to="/home">Home page</NuxtLink>
+    <MainVisual :banners="banners" />
+    <JobSearch />
+    <CompanyList />
+    <CityList />
+    <Article />
+    <About />
+    <Contact />
   </div>
 </template>
 
 <script>
-  export default {};
+  import MainVisual from './Home/components/MainVisual';
+  import JobSearch from './Home/components/JobSearch';
+  import CompanyList from './Home/components/CompanyList';
+  import CityList from './Home/components/CityList';
+  import Article from './Home/components/Article';
+  import About from './Home/components/About';
+  import Contact from './Home/components/Contact';
+
+  export default {
+    name: 'Home',
+    async asyncData({ $api }) {
+      const { data } = await $api('getBanners');
+      return { banners: data.data };
+    },
+    components: {
+      MainVisual,
+      JobSearch,
+      CompanyList,
+      CityList,
+      Article,
+      About,
+      Contact,
+    },
+  };
 </script>

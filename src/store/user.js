@@ -55,12 +55,12 @@ const actions = {
     commit('SET_LOGIN_EMAIL', payload);
   },
   setReferCode({ commit }) {
-    $api('userGetReferCode').then(data => {
+    this.$api('userGetReferCode').then(data => {
       commit('SET_REFER_CODE', data.data);
     });
   },
   setCaptchaImg({ commit }) {
-    $api('captchaImg').then(data => {
+    this.$api('captchaImg').then(data => {
       commit('SET_CAPTCHA_CODE', data.data.code);
       commit('SET_CAPTCHA_IMG', data.data.image);
     });

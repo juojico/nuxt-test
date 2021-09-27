@@ -19,6 +19,12 @@ export default {
   // 銀行清單
   getBankSelect: body => ({ method: 'GET', url: '/bank/select' }),
 
+  // 產業類別下拉式選單
+  getIndustryCategoryTree: body => ({
+    method: 'GET',
+    url: '/industryCategory/tree',
+  }),
+
   // ############## 搜索職缺 ##############
 
   // 取得國家地區 flag = 0:國內 1:海外
