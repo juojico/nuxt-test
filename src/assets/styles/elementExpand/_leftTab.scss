@@ -1,0 +1,40 @@
+//left tab
+.leftTab {
+  &.el-tabs--left .el-tabs__header.is-left {
+    background-color: white;
+    margin-right: 30px;
+    padding-top: 208px;
+
+    @include rwd($lg) {
+      float: none;
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  }
+
+  .el-tabs__nav-wrap::after {
+    background-color: white;
+  }
+
+  .el-tabs__active-bar {
+    background-color: transparent;
+  }
+
+  .el-tabs__item {
+    @include area(280px);
+    @include font(16, $text1, bold, 44);
+
+    @include rwd($lg) {
+      width: 100%;
+    }
+
+    &.is-left {
+      text-align: center;
+    }
+
+    &.is-active {
+      background-color: $bgBlue;
+      color: black;
+    }
+  }
+}

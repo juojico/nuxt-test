@@ -1,0 +1,51 @@
+body,
+html {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: $containerWidth + 40;
+  margin: auto;
+  padding: 0 20px;
+
+  @include rwd($sm) {
+    padding: 0 10px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0.25em 0;
+  line-height: 1.25em;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+@include rwd() {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+}
+
+// 隱藏 google reCaptcha 隱私權條款
+.grecaptcha-badge {
+  visibility: hidden;
+}

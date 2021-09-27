@@ -1,0 +1,75 @@
+// colors
+$red: #e56565;
+$orange: #f7920b;
+$blueGreen: #6bc5db;
+$green: #71ae33;
+$blue: #2ea9df;
+$pink: #e2136d;
+$white: #ffffff;
+
+$tagColors: (
+  'blue': #59bbe5,
+  'pink': #e574b0,
+  'green': #6ccb6c,
+);
+
+$jobTypeColors: (
+  '0': #2ea9df,
+  '1': #62ded1,
+  '2': #af8ae1,
+  '3': #f7920b,
+  '4': #e574b0,
+  '5': #6ccb6c,
+);
+
+$grey1: #f9f9fc;
+$grey2: #e4e4e4;
+$grey3: #c1c1c1;
+$grey4: #9c9595;
+
+$bgGrey1: #efeff4;
+$bgGrey2: #f0f1f5;
+$bgBlue: #d6ebff;
+
+$text1: #000000;
+$text2: #707070;
+$text3: #a2a2a2;
+
+$primary: $blue;
+$secondary: $blueGreen;
+$success: $green;
+$warning: $orange;
+$danger: $red;
+$disable: $grey4;
+$highlight: $pink;
+
+// spacing
+$spacingCard: 20px;
+$spacingCardTable: 16px;
+
+// layout
+$headerHeight: 96px;
+$footerHeight: 40px;
+$navHeight: $headerHeight + $footerHeight;
+
+$headerHeightL: 80px;
+$footerHeightL: 40px;
+$navHeightL: $headerHeightL + $footerHeightL;
+
+$headerHeightS: 60px;
+$footerHeightS: 30px;
+$navHeightS: $headerHeightS + $footerHeightS;
+
+$containerWidth: 960px;
+
+// z-index
+$indexNav: 100;
+$indexDialog: 110;
+$indexAlert: 120;
+
+// RWD
+$xl: 1280px;
+$lg: 960px;
+$md: 768px;
+$sm: 540px;
+$xs: 360px;

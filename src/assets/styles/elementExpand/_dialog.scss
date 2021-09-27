@@ -1,0 +1,107 @@
+.el-dialog__wrapper {
+  // 登入註冊
+  &.card-dialog {
+    .el-dialog {
+      @include area(90%);
+      max-width: 560px;
+      overflow: hidden;
+    }
+
+    .el-dialog__header {
+      display: none;
+    }
+
+    .el-dialog__body {
+      padding: 0;
+
+      .el-tabs__nav {
+        @include area();
+        @include flex();
+
+        &::after {
+          background-color: none;
+        }
+
+        .el-tabs__item {
+          @include font(20, $text1);
+          height: auto;
+          padding: 14px 0;
+          flex: 1;
+          background-color: $bgGrey1;
+          text-align: center;
+
+          &.is-active {
+            color: $primary;
+            background-color: white;
+          }
+        }
+      }
+
+      .el-tabs__active-bar {
+        top: 0;
+        bottom: auto;
+        height: 7px;
+      }
+
+      .el-tab-pane {
+        @include font(20, $text1);
+        padding: 25px 40px 40px 40px;
+
+        @include rwd() {
+          padding: 25px 20px 40px 20px;
+        }
+      }
+
+      .el-form-item {
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .el-form-item__label {
+          @include font(16, $text1);
+          text-align: left;
+        }
+      }
+    }
+
+    .el-dialog__footer {
+      .info {
+        @include font(12, $text3);
+        padding: 0 40px 20px 40px;
+      }
+      text-align: center;
+    }
+  }
+
+  // 個人中心 編輯資料
+  &.editDialog {
+    .el-dialog {
+      @include area(90%);
+      max-width: 480px;
+      overflow: hidden;
+    }
+
+    .el-dialog__body {
+      .el-form-item {
+        @include flex(flex-start);
+        flex-wrap: wrap;
+        margin-bottom: 0;
+
+        .el-form-item__label {
+          @include font(16, $text1);
+          width: 120px;
+          float: none;
+        }
+
+        .el-form-item__content {
+          flex: 1;
+          min-width: 220px;
+
+          @include rwd() {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}

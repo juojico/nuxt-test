@@ -1,0 +1,22 @@
+.el-button {
+  font-size: 16px;
+  padding: 0.5em 1em;
+
+  + .el-button {
+    margin-left: 1em;
+  }
+
+  &.is-plain {
+    background-color: white;
+  }
+
+  &.is-circle {
+    min-width: auto;
+  }
+
+  &.el-button--text {
+    @include font(16, $primary);
+    min-width: 1em;
+    padding: 0;
+  }
+}

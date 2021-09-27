@@ -1,0 +1,46 @@
+.el-input__inner,
+.el-range-input,
+.el-input-group__prepend,
+.el-input-group__append {
+  color: $text1;
+  background-color: $grey1;
+  border-color: transparent;
+}
+
+.inputGroup {
+  display: flex;
+  div {
+    &:first-child {
+      .el-input__inner {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    &:last-child {
+      .el-input__inner {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+
+.el-form--inline {
+  &.content-w18 {
+    .el-form-item__content {
+      min-width: 18rem;
+    }
+
+    &.content-w28 {
+      min-width: 28rem;
+    }
+  }
+
+  &.searchBar {
+    .el-form-item {
+      margin-bottom: 0;
+      margin-right: 20px;
+    }
+  }
+}

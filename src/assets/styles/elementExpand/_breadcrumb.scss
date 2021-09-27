@@ -1,0 +1,16 @@
+.el-breadcrumb {
+  padding: 40px 0 20px 0;
+
+  @include rwd() {
+    padding: 24px 10px;
+  }
+
+  .is-link {
+    @include font(26, $text1);
+  }
+
+  .el-breadcrumb__item {
+    @include font(14, $text1);
+    float: none;
+  }
+}

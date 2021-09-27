@@ -1,0 +1,25 @@
+@import 'variables';
+@import 'mixin';
+
+/* 改变主题色变量 */
+$--color-primary: $primary;
+$--color-success: $success;
+$--color-warning: $warning;
+$--color-danger: $danger;
+$--color-info: $secondary;
+
+$--color-text-primary: $text1;
+$--color-text-regular: $text2;
+$--color-text-secondary: $text3;
+$--color-text-placeholder: $text3;
+
+$--background-color-base: $bgGrey1;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+// 引入全部預設樣式
+@import '~element-ui/packages/theme-chalk/src/index';
+
+// 自定義擴展組件樣式
+@import 'elementExpand/index';

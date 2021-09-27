@@ -1,0 +1,45 @@
+@mixin defaultTag {
+  height: auto;
+  padding: 6px 8px;
+  border-radius: 2px;
+  border: none;
+}
+
+.el-tag {
+  @each $i, $color in $tagColors {
+    &.#{$i} {
+      background-color: #{$color};
+    }
+  }
+
+  @each $i, $color in $jobTypeColors {
+    &.color#{$i} {
+      background-color: #{$color};
+    }
+  }
+
+  &.article {
+    @include defaultTag();
+    @include font(12, white, false, 12);
+    margin-right: 12px;
+  }
+
+  &.skill {
+    @include defaultTag();
+    @include font(10, $text3, false, 10);
+    margin: 0 4px 8px 4px;
+    background-color: #f5f5f5;
+  }
+
+  &.jobType {
+    @include defaultTag();
+    @include font(12, white, false, 12);
+  }
+
+  &.keywords {
+    @include defaultTag();
+    @include font(16, $primary, false, 16);
+    padding: 4px 20px;
+    background-color: #b2e8ff;
+  }
+}

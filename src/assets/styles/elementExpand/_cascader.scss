@@ -1,0 +1,35 @@
+.el-form-item .el-cascader {
+  width: 100%;
+
+  .el-cascader__search-input {
+    background-color: #f9f9fc;
+  }
+}
+
+// 級聯下拉選單
+.el-popper.el-cascader__dropdown {
+  @include rwd() {
+    max-height: calc(100% - 20px);
+    width: calc(100% - 40px);
+  }
+
+  .el-cascader-panel {
+    @include rwd() {
+      flex-direction: column;
+
+      .el-cascader-menu {
+        border-right: none;
+        border-bottom: solid 1px #e4e7ed;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .el-cascader-menu__wrap {
+        max-height: 30vh;
+        height: auto;
+      }
+    }
+  }
+}
