@@ -1,13 +1,12 @@
 import { Message, MessageBox } from 'element-ui';
 import axios from 'axios';
 import Vue from 'vue';
-import { userLogout } from '@/api';
-import { BASE_URL } from '@/api/api';
+import { BASE_URL } from '@/plugins/axios';
 
 export const logout = type => {
   // store.commit('userModules/CLEAR_LOGIN_TOKEN');
   if (type === 'userClick') {
-    userLogout();
+    $api('userLogout');
     // router.replace('/');
     Message.success('帳號已登出');
   } else if (type === 'reset') {
@@ -137,7 +136,7 @@ export const fileUpload = function(url, para, callback) {
   }
 
   // let token = store.getters['userModules/token'];
-  let token ;
+  let token;
   axios
     .post(`${BASE_URL}${url}`, formData, {
       headers: {

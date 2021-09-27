@@ -21,7 +21,7 @@ export default {
   css: ["element-ui/lib/theme-chalk/index.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/element-ui", "@/plugins/axios"],
+  plugins: ["@/plugins/element-ui", "@/plugins/axios", "@/plugins/api"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -40,13 +40,6 @@ export default {
   build: {
     transpile: [/^element-ui/]
   },
-
-  // axios: {
-  //   baseURL:
-  //     process.env.NODE_ENV === "development"
-  //       ? "http://3.113.253.152:6688"
-  //       : "/apis"
-  // },
 
   alias: {
     api: resolve(__dirname, "./api"),

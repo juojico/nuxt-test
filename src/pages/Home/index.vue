@@ -11,8 +11,8 @@
 
   export default {
     name: "Home",
-    async asyncData({ $axios }) {
-      const { data } = await $axios.get(`/banner/getBanners`);
+    async asyncData({ $api }) {
+      const { data } = await $api("getBanners");
       return { banners: data.data };
     },
     components: {

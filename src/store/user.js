@@ -1,5 +1,3 @@
-import { userGetReferCode, captchaImg } from '@/api';
-
 // initial state
 const state = () => ({
   token: null,
@@ -57,12 +55,12 @@ const actions = {
     commit('SET_LOGIN_EMAIL', payload);
   },
   setReferCode({ commit }) {
-    userGetReferCode().then(data => {
+    $api('userGetReferCode').then(data => {
       commit('SET_REFER_CODE', data.data);
     });
   },
   setCaptchaImg({ commit }) {
-    captchaImg().then(data => {
+    $api('captchaImg').then(data => {
       commit('SET_CAPTCHA_CODE', data.data.code);
       commit('SET_CAPTCHA_IMG', data.data.image);
     });

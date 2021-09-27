@@ -1,34 +1,34 @@
-import { Message } from "element-ui";
-import { logout } from "@/utils";
-import download from "downloadjs";
+import { Message } from 'element-ui';
+import { logout } from '@/utils';
+import download from 'downloadjs';
+
+export const BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://3.113.253.152:6688'
+    : '/apis';
 
 export default function({ $axios, store, redirect }) {
   // setBaseURL
-  const BASE_URL =
-    process.env.NODE_ENV === "development"
-      ? "http://3.113.253.152:6688"
-      : "/apis";
-
   $axios.setBaseURL(BASE_URL);
 
   // setHeader
-  $axios.setHeader("content-type", "application/json");
+  $axios.setHeader('content-type', 'application/json');
 
-  let token = store.getters["userModules/token"];
+  let token = store.getters['userModules/token'];
   if (token) {
-    $axios.setHeader("Authorization", "Bearer " + token);
+    $axios.setHeader('Authorization', 'Bearer ' + token);
   }
 
   // onRequest
   $axios.onRequest(config => {
-    console.log("Making request to " + config.url);
+    console.log('Making request to ' + config.url);
   });
 
   // onResponse
   $axios.onResponse(response => {
-    if (response.headers["content-type"] === "application/pdf") {
-      let match = response.headers["content-disposition"].match(
-        /filename=(.*)/
+    if (response.headers['content-type'] === 'application/pdf') {
+      let match = response.headers['content-disposition'].match(
+        /filename=(.*)/,
       );
       download(response.data, decodeURIComponent(match[1]));
     }
@@ -38,7 +38,7 @@ export default function({ $axios, store, redirect }) {
     }
     if (response.data.code == 202) {
       logout();
-      return Promise.reject("登入帳號過期，請重新登入");
+      return Promise.reject('登入帳號過期，請重新登入');
     }
   });
 
