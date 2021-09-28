@@ -171,7 +171,7 @@
             captcha: this.dataForm.captcha,
           };
 
-          this.$api('userRegister', payload).then(({ data }) => {
+          this.$api('userRegister', payload).then(data => {
             if (data.code != 100) return this.$message.error(data.message);
             this.onClose();
             return this.$message.success('新增成功！請登入開始使用！');

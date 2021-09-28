@@ -80,13 +80,13 @@
     },
     methods: {
       getAreaList() {
-        this.$api('getArea', { flag: 0 }).then(({ data }) => {
-          this.area = data.data;
+        this.$api('getArea', { flag: 0 }).then(data => {
+          this.area = data;
         });
       },
       getSuggestKeywords() {
-        this.$api('getKeywords').then(({ data }) => {
-          this.suggestKeywords = data.data.map(item => item.value);
+        this.$api('getKeywords').then(data => {
+          this.suggestKeywords = data.map(item => item.value);
         });
       },
       setSearchbarHeight() {
@@ -104,8 +104,8 @@
           ...this.searchPayload,
           ...this.detailsPayload,
         };
-        this.$api('searchJobs', cleanObj(payload, true)).then(({ data }) => {
-          this.$emit('search', data.data);
+        this.$api('searchJobs', cleanObj(payload, true)).then(data => {
+          this.$emit('search', data);
         });
       },
       addKeyword(word) {
@@ -129,9 +129,9 @@
       },
     },
     mounted() {
-      this.getAreaList();
-      this.getSuggestKeywords();
-      this.onSearch();
+      // this.getAreaList();
+      // this.getSuggestKeywords();
+      // this.onSearch();
       this.setSearchbarHeight();
       window.addEventListener('scroll', throttle(200, false, this.onScroll), {
         passive: true,

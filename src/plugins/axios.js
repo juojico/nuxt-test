@@ -12,7 +12,7 @@ export default function({ $axios, store, redirect }) {
   $axios.setBaseURL(BASE_URL);
 
   // setHeader
-  $axios.setHeader('content-type', 'application/json');
+  $axios.setHeader('Content-Type', 'application/json');
 
   let token = store.getters['user/token'];
   if (token) {
@@ -30,14 +30,16 @@ export default function({ $axios, store, redirect }) {
       );
       download(response.data, decodeURIComponent(match[1]));
     }
-    if (response.status != 200) {
-      Message.error(response.data.msg);
-      return Promise.reject(response.data.msg);
+    if (response.status != 200 || response.data.code != 100) {
+      Message.error(response.data.message);
+      return Promise.reject(response.data.message);
     }
     if (response.data.code == 202) {
       logout();
       return Promise.reject('登入帳號過期，請重新登入');
     }
+
+    return response.data;
   });
 
   // onError

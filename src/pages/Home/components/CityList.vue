@@ -33,8 +33,8 @@
     },
     methods: {
       getCityPopular() {
-        this.$api('getAreaPopular').then(({ data }) => {
-          if (data.data.length) return (this.cityList = data.data);
+        this.$api('getAreaPopular').then(data => {
+          if (data.length) return (this.cityList = data);
         });
       },
       gotoJobs(value) {

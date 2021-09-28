@@ -38,8 +38,8 @@
     methods: {
       ...mapActions('article', ['setCategory', 'setCurrentId']),
       async getArticle() {
-        this.$api('getRandomArticle', { number: 3 }).then(({ data }) => {
-          this.articleList = data.data;
+        this.$api('getRandomArticle', { number: 3 }).then(data => {
+          this.articleList = data;
         });
       },
       gotoList(value, id) {

@@ -56,13 +56,13 @@ const actions = {
   },
   setReferCode({ commit }) {
     this.$api('userGetReferCode').then(data => {
-      commit('SET_REFER_CODE', data.data);
+      commit('SET_REFER_CODE', data);
     });
   },
   setCaptchaImg({ commit }) {
     this.$api('captchaImg').then(data => {
-      commit('SET_CAPTCHA_CODE', data.data.code);
-      commit('SET_CAPTCHA_IMG', data.data.image);
+      commit('SET_CAPTCHA_CODE', data.code);
+      commit('SET_CAPTCHA_IMG', data.image);
     });
   },
   logout({ commit }) {

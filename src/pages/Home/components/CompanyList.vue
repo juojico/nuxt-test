@@ -37,8 +37,8 @@
         this.$router.push({ name: 'Company', query: { id } });
       },
       getCompany() {
-        this.$api('getCompanyPopular').then(({ data }) => {
-          if (data.data.length) return (this.companyList = data.data);
+        this.$api('getCompanyPopular').then(data => {
+          if (data.length) return (this.companyList = data);
         });
       },
     },

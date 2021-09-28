@@ -37,8 +37,8 @@
         'getAreaWorldTree',
       ]),
       init() {
+        if (this.token) this.getBankSelect();
         this.getSkillTree();
-        this.getBankSelect();
         this.getIndustryCategoryTree();
         this.getJobCatTree();
         this.getAreaLocalTree();
@@ -62,7 +62,7 @@
           sessionStorage.setItem('store', JSON.stringify(this.$store.state));
         });
       }
-      this.init();
+      // this.init();
     },
     beforeMount() {
       if (!this.token) {

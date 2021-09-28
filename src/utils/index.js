@@ -147,10 +147,10 @@ export const fileUpload = function(url, para, callback) {
     .then(response => {
       let data = response.data;
       if (data.code == 100) {
-        if (callback) callback(data.data);
-      } else if (data.data) {
-        console.log(data.data);
-        Message.error(data.msg + ':' + data.data);
+        if (callback) callback(data);
+      } else if (data) {
+        console.log(data);
+        Message.error(data.msg + ':' + data);
       } else {
         Message.error(data.msg);
       }

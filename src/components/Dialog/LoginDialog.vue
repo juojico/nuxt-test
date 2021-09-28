@@ -81,17 +81,17 @@
       handleSubmit() {
         let callback = data => {
           // 登入失敗
-          if (!data.data || !data.data.accessToken) {
+          if (!data || !data.accessToken) {
             this.setCaptchaImg();
             return this.$message.error(data.message || '帳號資訊不完整！');
           }
-          this.setToken(data.data.accessToken);
+          this.setToken(data.accessToken);
           // this.setIsMaster(data.isMaster);
           // this.setOid(data.oid);
-          this.setUserName(data.data.name || '');
-          this.setUserEngName(data.data.engName || '');
-          this.setUserIdNumber(data.data.idNumber || '');
-          this.setEmail(data.data.email || '');
+          this.setUserName(data.name || '');
+          this.setUserEngName(data.engName || '');
+          this.setUserIdNumber(data.idNumber || '');
+          this.setEmail(data.email || '');
           this.setLoginShow(false);
           this.close();
         };
@@ -106,7 +106,7 @@
             captcha: this.dataForm.captcha,
           };
           this.$api('userLogin', body)
-            .then(({ data }) => {
+            .then(data => {
               callback(data);
             })
             .catch(() => {

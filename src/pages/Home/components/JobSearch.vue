@@ -32,6 +32,7 @@
   export default {
     name: 'JobSearch',
     components: { JobCard, Searchbar, ButtonsMenu },
+    props: { jobListData: { type: Array, default: () => [] } },
     data() {
       return {
         // api職缺類型type(0=全職, 1=約聘/派遣, 2=實習, 3=兼職, 4=遠端工作, 5=短期工讀, null=熱門)
@@ -43,13 +44,18 @@
           { label: '派遣', value: 1 },
         ],
         jobMenuActive: 0,
-        jobList: [],
+        jobList2: [],
         conditions: {},
       };
     },
+    computed: {
+      jobList() {
+        return this.jobListData || this.jobList2;
+      },
+    },
     methods: {
       onSearch(resultData) {
-        this.jobList = resultData.records;
+        this.jobList2 = resultData.records;
       },
       onJobMenuClick(index, value) {
         this.conditions = { type: value };
