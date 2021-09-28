@@ -129,9 +129,9 @@
       },
     },
     mounted() {
-      // this.getAreaList();
-      // this.getSuggestKeywords();
-      // this.onSearch();
+      this.getAreaList();
+      this.getSuggestKeywords();
+      this.onSearch();
       this.setSearchbarHeight();
       window.addEventListener('scroll', throttle(200, false, this.onScroll), {
         passive: true,

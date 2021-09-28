@@ -44,18 +44,13 @@
           { label: '派遣', value: 1 },
         ],
         jobMenuActive: 0,
-        jobList2: [],
+        jobList: this.jobListData,
         conditions: {},
       };
     },
-    computed: {
-      jobList() {
-        return this.jobListData || this.jobList2;
-      },
-    },
     methods: {
       onSearch(resultData) {
-        this.jobList2 = resultData.records;
+        this.jobList = resultData.records;
       },
       onJobMenuClick(index, value) {
         this.conditions = { type: value };
