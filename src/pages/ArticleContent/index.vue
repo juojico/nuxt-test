@@ -10,8 +10,8 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex';
-  import ArticleList from './components/ArticleList';
-  import ArticleContentDetails from './components/ArticleContentDetails';
+  import ArticleList from '~/pages/Article/components/ArticleList';
+  import ArticleContentDetails from '~/pages/Article/components/ArticleContentDetails';
 
   export default {
     name: 'ArticleContent',
