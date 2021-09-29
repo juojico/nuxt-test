@@ -35,7 +35,7 @@
       };
     },
     computed: {
-      ...mapGetters('personalModules', ['resumeData', 'isEdit']),
+      ...mapGetters('personal', ['resumeData', 'isEdit']),
       dataForInfoList() {
         if (!this.languageList) return [];
         const list = this.languageList.map(item => {
@@ -53,7 +53,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setLanguageList']),
+      ...mapActions('personal', ['setLanguageList']),
       getLanguageLv(value) {
         const currentItem = this.languageLevels.find(
           item => item.value === value,

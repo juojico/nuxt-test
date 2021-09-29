@@ -63,8 +63,8 @@
       // Withdrawal,
     },
     computed: {
-      ...mapGetters('personalModules', ['isEdit']),
-      ...mapGetters('userModules', [
+      ...mapGetters('personal', ['isEdit']),
+      ...mapGetters('user', [
         'token',
         'userName',
         'userEngName',
@@ -79,7 +79,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', [
+      ...mapActions('personal', [
         'setBasicData',
         'setResumeData',
         'setIsEdit',

@@ -33,7 +33,7 @@
       };
     },
     computed: {
-      ...mapGetters('personalModules', ['resumeData', 'isEdit']),
+      ...mapGetters('personal', ['resumeData', 'isEdit']),
       dataForInfoList() {
         if (!this.resumeData.userEducationList) return [];
         let educationList = [].concat(this.resumeData.userEducationList);
@@ -58,7 +58,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setEducationList']),
+      ...mapActions('personal', ['setEducationList']),
       handleDeleteEducation(payload) {
         this.$api('userDeleteEducation', payload).then(() => {
           this.$message.success('刪除成功!');

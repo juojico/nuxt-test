@@ -30,11 +30,11 @@
       // Community,
     },
     computed: {
-      ...mapGetters('personalModules', ['basicData', 'isEdit']),
+      ...mapGetters('personal', ['basicData', 'isEdit']),
     },
     methods: {
-      ...mapActions('personalModules', ['setBasicData', 'setIsEdit']),
-      ...mapActions('userModules', ['setUserName', 'setUserEngName', 'setEmail']),
+      ...mapActions('personal', ['setBasicData', 'setIsEdit']),
+      ...mapActions('user', ['setUserName', 'setUserEngName', 'setEmail']),
       onEdit() {
         this.setIsEdit(true);
       },

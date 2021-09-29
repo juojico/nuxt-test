@@ -37,7 +37,7 @@
       };
     },
     computed: {
-      ...mapGetters('articleModules', ['category']),
+      ...mapGetters('article', ['category']),
       nodata() {
         return this.articleList.length < 1;
       },
@@ -48,7 +48,7 @@
       },
     },
     methods: {
-      ...mapActions('articleModules', ['setCategory', 'setCurrentId']),
+      ...mapActions('article', ['setCategory', 'setCurrentId']),
       getArticles() {
         let categoryId = null;
         if (this.category && this.category !== 'news') {

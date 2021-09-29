@@ -40,7 +40,7 @@
       };
     },
     methods: {
-      ...mapActions('articleModules', ['setCurrentId']),
+      ...mapActions('article', ['setCurrentId']),
       clearArticleId() {
         this.setCurrentId(0);
       },

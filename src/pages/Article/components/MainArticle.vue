@@ -41,7 +41,7 @@
       };
     },
     methods: {
-      ...mapActions('articleModules', ['setCategory', 'setCurrentId']),
+      ...mapActions('article', ['setCategory', 'setCurrentId']),
       getArticles() {
         this.$api('getRandomArticle', { number: 3 }).then(data => {
           this.articleList = data;

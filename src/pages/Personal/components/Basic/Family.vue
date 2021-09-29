@@ -54,13 +54,13 @@
       };
     },
     computed: {
-      ...mapGetters('personalModules', ['basicData', 'isEdit']),
+      ...mapGetters('personal', ['basicData', 'isEdit']),
       dataForInfoList() {
         return this.basicData.userFamilyInfoList;
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setFamilyList']),
+      ...mapActions('personal', ['setFamilyList']),
       handleDeleteFamily(payload) {
         this.$api('userDeleteFamily', payload).then(() => {
           this.$message.success('刪除成功!');

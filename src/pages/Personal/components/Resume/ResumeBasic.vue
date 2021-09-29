@@ -140,7 +140,7 @@
       },
     },
     computed: {
-      ...mapGetters('personalModules', ['isEdit', 'resumeData']),
+      ...mapGetters('personal', ['isEdit', 'resumeData']),
       ...mapGetters(['areaLocalTree', 'areaWorldTree']),
       infoData: {
         get() {
@@ -154,7 +154,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setResumeData']),
+      ...mapActions('personal', ['setResumeData']),
       onAcceptableAbroadChange() {
         this.infoData.acceptableCountry = [];
       },

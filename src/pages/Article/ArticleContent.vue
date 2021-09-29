@@ -25,10 +25,10 @@
       };
     },
     computed: {
-      ...mapGetters('articleModules', ['category', 'currentId']),
+      ...mapGetters('article', ['category', 'currentId']),
     },
     methods: {
-      ...mapActions('articleModules', ['setCategory', 'setCurrentId']),
+      ...mapActions('article', ['setCategory', 'setCurrentId']),
       getArticleDetail(id) {
         this.$api('getOneArticle', { id }).then(data => {
           this.articleDetails = data;

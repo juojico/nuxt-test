@@ -182,10 +182,10 @@
     },
     computed: {
       ...mapGetters(['industryCategoryTree', 'jobCatTree', 'areaLocalTree']),
-      ...mapGetters('userModules', ['captchaCode']),
+      ...mapGetters('user', ['captchaCode']),
     },
     methods: {
-      ...mapActions('userModules', ['setCaptchaImg']),
+      ...mapActions('user', ['setCaptchaImg']),
       onAreaIdsChange(selected) {
         this.dataForm.areaIds = selected;
       },

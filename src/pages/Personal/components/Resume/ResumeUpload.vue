@@ -38,7 +38,7 @@
       };
     },
     computed: {
-      ...mapGetters('personalModules', ['isEdit']),
+      ...mapGetters('personal', ['isEdit']),
     },
     methods: {
       handleDownload(file) {

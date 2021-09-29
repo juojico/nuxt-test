@@ -47,10 +47,10 @@
       };
     },
     computed: {
-      ...mapGetters('jobsModules', ['currentCompanyId']),
+      ...mapGetters('jobs', ['currentCompanyId']),
     },
     methods: {
-      ...mapActions('jobsModules', ['setCurrentCompanyId']),
+      ...mapActions('jobs', ['setCurrentCompanyId']),
       getCompanyDetail() {
         this.$api('getCompany', { oid: this.currentCompanyId }).then(data => {
           this.companyDetail = data;

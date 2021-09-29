@@ -58,8 +58,8 @@
       };
     },
     computed: {
-      ...mapGetters('jobsModules', ['currentJobId']),
-      ...mapGetters('userModules', ['token', 'userName']),
+      ...mapGetters('jobs', ['currentJobId']),
+      ...mapGetters('user', ['token', 'userName']),
       jobDetailContact() {
         const keys = ['location', 'email', 'tel'];
         let contactInfo = {};
@@ -70,9 +70,9 @@
       },
     },
     methods: {
-      ...mapActions('jobsModules', ['setCurrentJobId', 'setCurrentCompanyId']),
-      ...mapActions('dialogModules', ['setLoginShow']),
-      ...mapActions('userModules', ['setReferCode']),
+      ...mapActions('jobs', ['setCurrentJobId', 'setCurrentCompanyId']),
+      ...mapActions('dialog', ['setLoginShow']),
+      ...mapActions('user', ['setReferCode']),
       getJobDetail() {
        this.$api('getJob', { id: this.currentJobId }).then(data => {
           this.jobDetail = data;

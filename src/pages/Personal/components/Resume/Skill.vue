@@ -27,7 +27,7 @@
       };
     },
     computed: {
-      ...mapGetters('personalModules', ['resumeData', 'isEdit']),
+      ...mapGetters('personal', ['resumeData', 'isEdit']),
       dataForInfoList() {
         if (!this.resumeData.userSkillList) return [];
         const list = this.resumeData.userSkillList.map(item => {
@@ -43,7 +43,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setSkillList']),
+      ...mapActions('personal', ['setSkillList']),
       getSkillList() {
         this.$api('userGetSkillList').then(data => {
           this.setSkillList(data);

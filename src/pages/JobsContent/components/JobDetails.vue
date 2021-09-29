@@ -138,7 +138,7 @@
     name: 'JobDetails',
     props: { item: { type: Object, default: () => {} } },
     methods: {
-      ...mapActions('jobsModules', ['setCurrentCompanyId']),
+      ...mapActions('jobs', ['setCurrentCompanyId']),
       gotoCompany(id) {
         this.setCurrentCompanyId(id || 0);
         this.$router.push({ name: 'Company', query: { id } });

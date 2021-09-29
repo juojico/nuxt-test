@@ -32,7 +32,7 @@
       };
     },
     computed: {
-      ...mapGetters('personalModules', ['resumeData', 'isEdit']),
+      ...mapGetters('personal', ['resumeData', 'isEdit']),
       dataForInfoList() {
         if (!this.resumeData.userExperienceList) return [];
         let experienceList = [].concat(this.resumeData.userExperienceList);
@@ -71,7 +71,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setExperienceList']),
+      ...mapActions('personal', ['setExperienceList']),
       handleDeleteExperience(payload) {
         this.$api('userDeleteExperience', payload).then(() => {
           this.$message.success('刪除成功!');

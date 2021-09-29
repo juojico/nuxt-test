@@ -43,8 +43,8 @@
       };
     },
     computed: {
-      ...mapGetters('jobsModules', ['currentJobId']),
-      ...mapGetters('userModules', ['userName']),
+      ...mapGetters('jobs', ['currentJobId']),
+      ...mapGetters('user', ['userName']),
       labelWidth() {
         if (process.browser) {
           return window.innerWidth > 768 ? 'auto' : '';

@@ -26,8 +26,8 @@
       };
     },
     computed: {
-      ...mapGetters('jobsModules', ['currentJobId']),
-      ...mapGetters('userModules', ['referCode', 'userName']),
+      ...mapGetters('jobs', ['currentJobId']),
+      ...mapGetters('user', ['referCode', 'userName']),
       sharePath() {
         return `${location.origin + location.pathname}?id=${
           this.currentJobId

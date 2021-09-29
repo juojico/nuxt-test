@@ -29,7 +29,7 @@
       };
     },
     computed: {
-      ...mapGetters('jobsModules', ['currentCompanyId']),
+      ...mapGetters('jobs', ['currentCompanyId']),
       nodata() {
         return this.jobList.length < 1;
       },
@@ -40,7 +40,7 @@
       },
     },
     methods: {
-      ...mapActions('jobsModules', ['setCurrentJobId']),
+      ...mapActions('jobs', ['setCurrentJobId']),
       getJobs() {
         if (!this.currentCompanyId) return;
 

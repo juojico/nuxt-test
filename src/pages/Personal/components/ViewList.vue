@@ -13,7 +13,7 @@
     name: 'ViewList',
     props: ['infoFields', 'infoData', 'labelWidth'],
     computed: {
-      ...mapGetters('personalModules', ['isEdit']),
+      ...mapGetters('personal', ['isEdit']),
     },
     methods: {
       format(val, filters) {

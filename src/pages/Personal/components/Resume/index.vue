@@ -41,10 +41,10 @@
       ResumeUpload,
     },
     computed: {
-      ...mapGetters('personalModules', ['isEdit', 'resumeData']),
+      ...mapGetters('personal', ['isEdit', 'resumeData']),
     },
     methods: {
-      ...mapActions('personalModules', ['setResumeData', 'setIsEdit']),
+      ...mapActions('personal', ['setResumeData', 'setIsEdit']),
       onEdit() {
         this.setIsEdit(true);
       },

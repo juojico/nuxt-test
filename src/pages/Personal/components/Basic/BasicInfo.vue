@@ -120,7 +120,7 @@
       },
     },
     computed: {
-      ...mapGetters('personalModules', ['basicData', 'isEdit']),
+      ...mapGetters('personal', ['basicData', 'isEdit']),
       infoData: {
         get() {
           return this.basicData;
@@ -133,7 +133,7 @@
       },
     },
     methods: {
-      ...mapActions('personalModules', ['setBasicData']),
+      ...mapActions('personal', ['setBasicData']),
       checkAddress() {},
     },
   };
