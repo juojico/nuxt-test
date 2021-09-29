@@ -18,7 +18,9 @@ export const hasSpecial = str => {
 };
 
 export const isEmail = str => {
-  return /^[_a-z0-9-]+([.][_a-z0-9-]+)*@[a-z0-9-]+([.][a-z0-9-]+)*$/.test(String(str));
+  return /^[_a-z0-9-]+([.][_a-z0-9-]+)*@[a-z0-9-]+([.][a-z0-9-]+)*$/.test(
+    String(str),
+  );
 };
 
 // rules validator
@@ -105,11 +107,22 @@ export const validIdNumber = (rule, value, callback) => {
   }
 };
 
+export const validInteger = (rule, value, callback) => {
+  if (!value) {
+    return callback();
+  }
+  if (!value.toString().match(/^\+?[1-9][0-9]*$/)) {
+    return callback(new Error('必須為正整數'));
+  }
+  return callback();
+};
+
 export const required = {
   required: true,
   message: '此為必填欄位',
   trigger: 'blur',
 };
+
 export const url = { validator: validUrl, trigger: 'blur' };
 export const special = { validator: validSpecial, trigger: 'blur' };
 export const email = { validator: validEmail, trigger: 'blur' };
@@ -117,3 +130,4 @@ export const phone = { validator: validPhone, trigger: 'blur' };
 export const password = { validator: validPassword, trigger: 'blur' };
 export const number = { validator: validNumber, trigger: 'blur' };
 export const idNumber = { validator: validIdNumber, trigger: 'blur' };
+export const integer = { validator: validInteger, trigger: 'blur' };

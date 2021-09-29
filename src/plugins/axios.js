@@ -4,8 +4,8 @@ import download from 'downloadjs';
 
 export const BASE_URL =
   process.env.NODE_ENV === 'development'
-    ? 'https://dev.step1ne.com/apis'
-    : 'https://dev.step1ne.com/apis';
+    ? 'http://3.113.253.152:6688'
+    : '/apis';
 
 export default function({ $axios, store, redirect }) {
   // setBaseURL

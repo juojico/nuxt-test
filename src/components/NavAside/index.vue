@@ -19,27 +19,41 @@
 
     methods: {
       onScroll() {
-        this.topShow = window.pageYOffset > 300;
+        if (process.browser) {
+          this.topShow = window.pageYOffset > 300;
+        }
       },
       onClickButton(url) {
-        window.open(url);
+        if (process.browser) {
+          window.open(url);
+        }
       },
       gotoTop() {
-        window.scroll({
-          top: 0,
-          behavior: 'smooth',
-        });
+        if (process.browser) {
+          window.scroll({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }
       },
     },
     mounted() {
-      window.addEventListener('scroll', throttle(500, false, this.onScroll), {
-        passive: true,
-      });
+      if (process.browser) {
+        window.addEventListener('scroll', throttle(500, false, this.onScroll), {
+          passive: true,
+        });
+      }
     },
     destroyed() {
-      window.removeEventListener('scroll', throttle(500, false, this.onScroll), {
-        passive: true,
-      });
+      if (process.browser) {
+        window.removeEventListener(
+          'scroll',
+          throttle(500, false, this.onScroll),
+          {
+            passive: true,
+          },
+        );
+      }
     },
   };
 </script>

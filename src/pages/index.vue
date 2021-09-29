@@ -6,7 +6,7 @@
     <CityList />
     <Article />
     <About />
-    <!-- <Contact /> -->
+    <Contact />
   </div>
 </template>
 

@@ -93,8 +93,10 @@
         this.searchbarHeight = this.$refs.searchbarArea.clientHeight;
       },
       onScroll() {
-        const windowTop = window.pageYOffset;
-        this.isDown = windowTop >= this.searchbarHeight;
+        if (process.browser) {
+          const windowTop = window.pageYOffset;
+          this.isDown = windowTop >= this.searchbarHeight;
+        }
       },
       filterChange(payload) {
         this.detailsPayload = payload;
@@ -112,10 +114,12 @@
         this.searchPayload.keywords = word;
       },
       openSearch() {
-        window.scroll({
-          top: 0,
-          behavior: 'smooth',
-        });
+        if (process.browser) {
+          window.scroll({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }
       },
     },
     watch: {
@@ -133,20 +137,28 @@
       this.getSuggestKeywords();
       this.onSearch();
       this.setSearchbarHeight();
-      window.addEventListener('scroll', throttle(200, false, this.onScroll), {
-        passive: true,
-      });
-      window.addEventListener('resize', this.setSearchbarHeight, {
-        passive: true,
-      });
+      if (process.browser) {
+        window.addEventListener('scroll', throttle(200, false, this.onScroll), {
+          passive: true,
+        });
+        window.addEventListener('resize', this.setSearchbarHeight, {
+          passive: true,
+        });
+      }
     },
     destroyed() {
-      window.removeEventListener('scroll', throttle(200, false, this.onScroll), {
-        passive: true,
-      });
-      window.removeEventListener('resize', this.setSearchbarHeight, {
-        passive: true,
-      });
+      if (process.browser) {
+        window.removeEventListener(
+          'scroll',
+          throttle(200, false, this.onScroll),
+          {
+            passive: true,
+          },
+        );
+        window.removeEventListener('resize', this.setSearchbarHeight, {
+          passive: true,
+        });
+      }
     },
   };
 </script>
