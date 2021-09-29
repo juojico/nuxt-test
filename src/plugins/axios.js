@@ -4,7 +4,7 @@ import download from 'downloadjs';
 
 export const BASE_URL =
   process.env.NODE_ENV === 'development'
-    ? 'http://3.113.253.152:6688'
+    ? 'https://dev.step1ne.com/apis'
     : '/apis';
 
 export default function({ $axios, store, redirect }) {
@@ -39,7 +39,7 @@ export default function({ $axios, store, redirect }) {
       return Promise.reject('登入帳號過期，請重新登入');
     }
 
-    return response.data;
+    return Promise.resolve(response.data);
   });
 
   // onError
