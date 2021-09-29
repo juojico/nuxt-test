@@ -16,11 +16,17 @@ export default function({ $axios }, inject) {
       switch (method) {
         case 'POST':
           $axios.post(url, payload).then(({ data }) => {
+            if(!data) {
+              reject(new Error('fail'))
+            }
             resolve(data);
           });
           break;
         case 'GET':
           $axios.get(url, { params: payload }).then(({ data }) => {
+            if(!data) {
+              reject(new Error('fail'))
+            }
             resolve(data);
           });
           break;

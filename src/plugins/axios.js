@@ -44,12 +44,6 @@ export default function({ $axios, store, redirect }) {
 
   // onError
   $axios.onError(error => {
-    const statusCode = error.response ? parseInt(error.response.status) : null;
-    if (statusCode == 401) {
-      logout();
-    } else {
-      Message.error(error.response.data.msg || error.response.statusText);
-    }
-    return Promise.reject(error.response);
+    return Promise.reject(error);
   });
 }

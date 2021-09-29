@@ -1,9 +1,7 @@
 <template>
   <div>
-    <!-- <MainVisual :banners="banners" />
-    <JobSearch :jobListData="jobList" /> -->
-    <MainVisual />
-    <JobSearch />
+    <MainVisual :banners="banners" />
+    <JobSearch :jobListData="jobList" />
     <CompanyList />
     <CityList />
     <Article />
@@ -23,14 +21,14 @@
 
   export default {
     name: 'Home',
-    // async asyncData({ $api }) {
-    //   const bannersData = await $api('getBanners');
-    //   const jobListData = await $api('searchJobs', { size: 9, current: 1 });
-    //   return {
-    //     banners: bannersData || [],
-    //     jobList: jobListData.records || [],
-    //   };
-    // },
+    async asyncData({ $api }) {
+      const bannersData = await $api('getBanners');
+      const jobListData = await $api('searchJobs', { size: 9, current: 1 });
+      return {
+        banners: bannersData || [],
+        jobList: jobListData.records || [],
+      };
+    },
 
     components: {
       MainVisual,
