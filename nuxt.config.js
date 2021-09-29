@@ -1,5 +1,6 @@
 export default {
   srcDir: 'src/',
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'STEP1NE - 讓 STEP1NE 與您一起邁出成功的第一步',
