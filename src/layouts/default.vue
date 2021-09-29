@@ -61,8 +61,8 @@
         window.addEventListener('beforeunload', () => {
           sessionStorage.setItem('store', JSON.stringify(this.$store.state));
         });
+        this.init();
       }
-      this.init();
     },
     beforeMount() {
       if (!this.token) {

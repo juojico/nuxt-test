@@ -1,5 +1,5 @@
 <template>
-  <div v-if="banners.length > 0" class="mainVisualWrapper">
+  <div v-if="banners && banners.length > 0" class="mainVisualWrapper">
     <div class="bannerArea">
       <div v-for="(item, index) in banners" :key="`banner${index}`" :class="{bannerBox: true, on: index === activeIndex}">
         <img class="bgImg" :src="item.bannerUrl" alt="首頁輪播圖圖片">
