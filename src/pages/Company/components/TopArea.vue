@@ -1,5 +1,5 @@
 <template>
-  <div class="topAreaWrapper">
+  <div v-if="companyDetail" class="topAreaWrapper">
     <Card class="topAreaBox">
       <div class="mainArea">
         <el-avatar :src="companyDetail.logoUrl || require('assets/logo/logo-text.png')" shape="square" :alt="`${companyDetail.ownerName}LOGO`"></el-avatar>

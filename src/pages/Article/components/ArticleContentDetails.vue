@@ -1,5 +1,5 @@
 <template>
-  <div class="articleContentWrapper">
+  <div v-if="item" class="articleContentWrapper">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/article' }" @click="clearArticleId">精選閱讀</el-breadcrumb-item>
       <el-breadcrumb-item>{{item.title}}</el-breadcrumb-item>

@@ -58,7 +58,7 @@
     },
     computed: {
       nodata() {
-        return this.jobList.length < 1;
+        return !this.jobList || this.jobList.length < 1;
       },
       showPager() {
         if (this.nodata || this.pagerInfo.size > this.pagerInfo.total)

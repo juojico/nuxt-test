@@ -1,5 +1,5 @@
 <template>
-  <div class="jobDetailsWrapper">
+  <div v-if="item" class="jobDetailsWrapper">
     <Card class="topAreaBox">
       <div class="mainArea">
         <el-avatar :src="item.imgUrl || require('assets/logo/logo-text.png')" shape="square" :alt="`${item.ownerName}LOGO`"></el-avatar>

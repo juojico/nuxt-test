@@ -55,6 +55,8 @@ export default {
     '@/plugins/filter',
     '@/plugins/axios',
     '@/plugins/api',
+    '@/plugins/vueGtag',
+    '@/plugins/vueClipboard',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
