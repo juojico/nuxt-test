@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :visible.sync="isLoginShow" class="card-dialog" @open="onOpen" @close="onClose">
+  <el-dialog :visible.sync="isLoginShow" class="card-dialog" @open="onOpen" @close="onClose" key="loginDialog">
     <el-tabs v-model="activeTab">
       <el-tab-pane label="會員登入">
         <el-form :label-position="labelPosition" label-width="auto" :model="dataForm" ref="dataForm" :rules="rules" @keyup.native.enter="onClickLogin">
@@ -136,9 +136,6 @@
         this.$refs['dataForm'].clearValidate();
         this.setLoginShow(false);
         this.close();
-      },
-      refreshCaptcha() {
-        this.setCaptchaImg();
       },
     },
   };

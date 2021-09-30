@@ -5,7 +5,7 @@
         <ViewList label-width="120px" :infoFields="infoFields" :infoData="infoData" />
         <el-form v-if="isEdit" label-width="120px" :model="infoData" ref="infoData" :rules="rules" :label-position="labelPosition" class="content-w18">
           <el-form-item label="希望性質" prop="hopeJobNatureStatus">
-            <el-select placeholder="請選擇" id="hopeJobNatureStatus" size="mini" v-model="infoData.hopeJobNatureStatus">
+            <el-select placeholder="請選擇" id="hopeJobNatureStatus" size="mini" v-model="infoData.hopeJobNatureStatus" @change="handleInfo">
               <el-option id="hopeJobNatureStatus0" label="全職" :value="0"></el-option>
               <el-option id="hopeJobNatureStatus1" label="約聘" :value="1"></el-option>
               <el-option id="hopeJobNatureStatus2" label="實習" :value="2"></el-option>
@@ -13,7 +13,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="上班時段" prop="workTimeType">
-            <el-radio-group v-model="infoData.workTimeType">
+            <el-radio-group v-model="infoData.workTimeType" @change="handleInfo">
               <el-radio id="genderMale" :label="0">早班</el-radio>
               <el-radio id="genderMale" :label="3">中班</el-radio>
               <el-radio id="genderMale" :label="1">晚班</el-radio>
@@ -21,7 +21,7 @@
             </el-radio-group>
           </el-form-item>
           <el-form-item label="可到班日" prop="estimedAvailableTime">
-            <el-date-picker id="estimedAvailableTime" v-model="infoData.estimedAvailableTime" type="date" placeholder="選擇日期" format="yyyy 年 MM 月 dd 日" size="mini">
+            <el-date-picker id="estimedAvailableTime" v-model="infoData.estimedAvailableTime" @change="handleInfo" type="date" placeholder="選擇日期" format="yyyy 年 MM 月 dd 日" size="mini">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="是否可至國外工作">
@@ -49,19 +49,19 @@
             }" filterable @change="onActTaiwanChange"></el-cascader>
           </el-form-item>
           <el-form-item label="偏好產業" prop="preferredIndustry">
-            <el-input id="preferredIndustry" class="input60" size="mini" v-model="infoData.preferredIndustry"></el-input>
+            <el-input id="preferredIndustry" class="input60" size="mini" v-model="infoData.preferredIndustry" @change="handleInfo"></el-input>
           </el-form-item>
           <el-form-item label="排斥產業" prop="exclusionIndustry">
-            <el-input id="exclusionIndustry" class="input60" size="mini" v-model="infoData.exclusionIndustry"></el-input>
+            <el-input id="exclusionIndustry" class="input60" size="mini" v-model="infoData.exclusionIndustry" @change="handleInfo"></el-input>
           </el-form-item>
           <el-form-item label="期望月薪" prop="expectedMonthSalary">
-            <el-input id="expectedMonthSalary" class="input60" size="mini" v-model="infoData.expectedMonthSalary" type="number"></el-input>
+            <el-input id="expectedMonthSalary" class="input60" size="mini" v-model="infoData.expectedMonthSalary" @change="handleInfo" type="number"></el-input>
           </el-form-item>
           <el-form-item label="期望年薪" prop="expectedAnnualSalary">
-            <el-input id="expectedAnnualSalary" class="input60" size="mini" v-model="infoData.expectedAnnualSalary" type="number"></el-input>
+            <el-input id="expectedAnnualSalary" class="input60" size="mini" v-model="infoData.expectedAnnualSalary" @change="handleInfo" type="number"></el-input>
           </el-form-item>
           <el-form-item label="預計可到職時間" prop="estimedAvailableTime">
-            <el-date-picker id="estimedAvailableTime" v-model="infoData.estimedAvailableTime" type="date" placeholder="選擇日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" size="mini">
+            <el-date-picker id="estimedAvailableTime" v-model="infoData.estimedAvailableTime" @change="handleInfo" type="date" placeholder="選擇日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" size="mini">
             </el-date-picker>
           </el-form-item>
         </el-form>
@@ -84,6 +84,7 @@
     data() {
       return {
         isSameAddress: false,
+        infoData: {},
         rules: {},
         infoFields: [
           {
@@ -132,21 +133,16 @@
       };
     },
     watch: {
-      infoData: {
+      basicData: {
         handler(value) {
-          this.setResumeData(value);
+          this.infoData = JSON.parse(JSON.stringify(value));
         },
         deep: true,
       },
     },
     computed: {
       ...mapGetters('personal', ['isEdit', 'resumeData']),
-      ...mapGetters(['areaLocalTree', 'areaWorldTree']),
-      infoData: {
-        get() {
-          return this.resumeData;
-        },
-      },
+      ...mapGetters('common', ['areaLocalTree', 'areaWorldTree']),
       labelPosition() {
         if (process.browser) {
           return window.innerWidth > 768 ? 'left' : 'top';
@@ -155,14 +151,20 @@
     },
     methods: {
       ...mapActions('personal', ['setResumeData']),
+      handleInfo() {
+        this.setResumeData(this.infoData);
+      },
       onAcceptableAbroadChange() {
         this.infoData.acceptableCountry = [];
+        this.handleInfo();
       },
       onActWorldChange(selected) {
         this.infoData.acceptableCountry = selected;
+        this.handleInfo();
       },
       onActTaiwanChange(selected) {
         this.infoData.acceptableInTaiwan = selected;
+        this.handleInfo();
       },
     },
   };

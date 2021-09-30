@@ -1,32 +1,7 @@
-import { Message, MessageBox } from 'element-ui';
+import { Message } from 'element-ui';
 import axios from 'axios';
 import Vue from 'vue';
 import { BASE_URL } from '@/plugins/axios';
-
-export const logout = type => {
-  // store.commit('user/CLEAR_LOGIN_TOKEN');
-  if (type === 'userClick') {
-    // $api('userLogout');
-    // router.replace('/');
-    Message.success('帳號已登出');
-  } else if (type === 'reset') {
-    Message.success('密碼已重設，請重新登入');
-  }
-};
-
-export const loginFirst = callback => {
-  // let token = store.getters['user/token'];
-  let token;
-
-  if (!token) {
-    return MessageBox('尚未登入, 請先登入', '', {
-      type: 'warning',
-    }).then(() => {
-      // store.commit('dialog/SET_LOGIN_SHOW', true);
-    });
-  }
-  callback();
-};
 
 export const cleanObj = (obj, empty) => {
   for (const [key, value] of Object.entries(obj)) {
@@ -135,8 +110,7 @@ export const fileUpload = function(url, para, callback) {
     formData.append('type', para.type);
   }
 
-  // let token = store.getters['user/token'];
-  let token;
+  let token = store.getters['user/token'];
   axios
     .post(`${BASE_URL}${url}`, formData, {
       headers: {

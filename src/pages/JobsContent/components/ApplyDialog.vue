@@ -61,7 +61,7 @@
           if (!valid) {
             return null;
           }
-          $api('userAddApplicant', payload).then(data => {
+          this.$api('userAddApplicant', payload).then(data => {
             if (data.code == 100) {
               this.$message.success('應徵成功!');
             } else {

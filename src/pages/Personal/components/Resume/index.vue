@@ -50,14 +50,14 @@
       },
       onSave() {
         this.setIsEdit(false);
-       this.$api('userUpdateUserResume', this.resumeData).then(data => {
-          if (data.code == 100) {
+        this.$api('userUpdateUserResume', this.resumeData)
+          .then(data => {
             this.$message.success('編輯成功!');
             this.updatePageData();
-          } else {
-            this.$message.warning(`編輯失敗! ${data.message}`);
-          }
-        });
+          })
+          .catch(error => {
+            this.$message.warning(`編輯失敗! ${error.message}`);
+          });
       },
     },
     mounted() {},

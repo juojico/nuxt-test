@@ -75,7 +75,7 @@
       };
     },
     computed: {
-      ...mapGetters(['bankSelect']),
+      ...mapGetters('common', ['bankSelect']),
     },
     methods: {
       getWithdrawInfo() {

@@ -42,17 +42,17 @@
         this.setIsEdit(false);
         let payload = cleanObj(this.basicData);
 
-        $api('userUpdateUser', payload).then(data => {
-          if (data.code == 100) {
+        this.$api('userUpdateUser', payload)
+          .then(data => {
             const { name, engName, email } = data;
             this.setUserName(name);
             this.setUserEngName(engName);
             this.setEmail(email);
             this.$message.success('編輯成功!');
-          } else {
-            this.$message.warning(`編輯失敗! ${data.message}`);
-          }
-        });
+          })
+          .catch(error => {
+            this.$message.warning(`編輯失敗! ${error.message}`);
+          });
       },
     },
   };

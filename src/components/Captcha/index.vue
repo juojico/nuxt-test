@@ -12,7 +12,7 @@
 
   export default {
     computed: {
-      ...mapGetters('user', ['token', 'captchaImg']),
+      ...mapGetters('user', ['captchaImg']),
     },
     methods: {
       ...mapActions('user', ['setCaptchaImg']),

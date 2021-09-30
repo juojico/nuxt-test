@@ -1,33 +1,42 @@
 <template>
   <div class="wrapper">
     <NavHeader />
-    <div class="mainContainer">
+    <main class="mainContainer">
       <Nuxt />
-    </div>
+    </main>
     <NavAside />
     <NavFooter />
 
     <LoginDialog />
     <RegisterDialog />
+    <RulesDialog />
   </div>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import { logout } from '~/utils';
   import NavHeader from '~/components/NavHeader';
   import NavFooter from '~/components/NavFooter';
   import NavAside from '~/components/NavAside';
   import LoginDialog from '~/components/Dialog/LoginDialog';
   import RegisterDialog from '~/components/Dialog/RegisterDialog';
+  import RulesDialog from '~/components/Dialog/RulesDialog';
 
   export default {
     name: 'App',
-    components: { NavHeader, NavFooter, NavAside, LoginDialog, RegisterDialog },
+    components: {
+      NavHeader,
+      NavFooter,
+      NavAside,
+      LoginDialog,
+      RegisterDialog,
+      RulesDialog,
+    },
     computed: {
       ...mapGetters('user', ['token']),
     },
     methods: {
+      ...mapActions('user', ['logout']),
       ...mapActions('common', [
         'getSkillTree',
         'getBankSelect',
@@ -66,7 +75,7 @@
     },
     beforeMount() {
       if (!this.token) {
-        logout();
+        this.logout();
       }
     },
   };

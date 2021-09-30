@@ -8,6 +8,12 @@ export default {
   // 驗證碼圖片
   captchaImg: () => ({ method: 'GET', url: '/auth/captcha' }),
 
+  // 上傳履歷註冊 - 上傳檔案
+  registerUploadFile: () => ({ method: 'POST', url: '/auth/uploadFile' }),
+
+  // 帳號認證
+  authVerify: () => ({ method: 'GET', url: '/auth/verify' }),
+
   // 登出
   userLogout: () => ({ method: 'POST', url: '/user/logout' }),
 
@@ -137,6 +143,12 @@ export default {
   userDeleteEducation: () => ({
     method: 'POST',
     url: '/userEducation/delete',
+  }),
+
+  // 會員中心-基本資料-Email認證
+  sendEmailVerify: () => ({
+    method: 'GET',
+    url: '/user/sendEmailVerify',
   }),
 
   // 會員中心-我的履歷-取得工作經歷列表

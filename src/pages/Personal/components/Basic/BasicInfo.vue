@@ -4,50 +4,50 @@
       <ViewList :infoFields="infoFields" :infoData="infoData" />
       <el-form v-if="isEdit" :label-position="labelPosition" label-width="120px" :model="infoData" ref="infoData" :rules="rules" class="content-w18">
         <el-form-item label="工作狀態" prop="workStatus">
-          <el-radio-group id="workStatus" v-model="infoData.workStatus">
+          <el-radio-group id="workStatus" v-model="infoData.workStatus" @change="handleInfo">
             <el-radio label="incumbent">在職</el-radio>
             <el-radio label="unemployed">待業中</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item id="name" label="中文姓名" prop="name">
-          <el-input size="mini" class="input60" v-model="infoData.name"></el-input>
+          <el-input size="mini" class="input60" v-model="infoData.name" @change="handleInfo"></el-input>
         </el-form-item>
         <el-form-item label="英文姓名" prop="englishName">
-          <el-input id="englishName" class="input60" size="mini" v-model="infoData.englishName"></el-input>
+          <el-input id="englishName" class="input60" size="mini" v-model="infoData.englishName" @change="handleInfo"></el-input>
         </el-form-item>
         <el-form-item label="性別" prop="gender">
-          <el-radio-group v-model="infoData.gender">
+          <el-radio-group v-model="infoData.gender" @change="handleInfo">
             <el-radio id="genderMale" label="male">男</el-radio>
             <el-radio id="genderFemale" label="female">女</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="出生日期" prop="birthday">
-          <el-date-picker id="birthday" v-model="infoData.birthday" type="date" placeholder="選擇日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" size="mini">
+          <el-date-picker id="birthday" v-model="infoData.birthday" @change="handleInfo" type="date" placeholder="選擇日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" size="mini">
           </el-date-picker>
         </el-form-item>
         <el-form-item label="國籍" prop="nationality">
-          <el-radio-group id="nationality" v-model="infoData.nationality">
+          <el-radio-group id="nationality" v-model="infoData.nationality" @change="handleInfo">
             <el-radio label="native">本國</el-radio>
             <el-radio label="foreign">外籍</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item :label="infoData.nationality === 'foreign' ? '護照號碼' : '身份證字號'" prop="idNumber">
-          <el-input id="idNumber" class="input60" size="mini" v-model="infoData.idNumber" disabled></el-input>
+          <el-input id="idNumber" class="input60" size="mini" v-model="infoData.idNumber" @change="handleInfo" disabled></el-input>
         </el-form-item>
         <el-form-item label="電子郵件" prop="email">
-          <el-input id="email" class="input60" size="mini" v-model="infoData.email" disabled></el-input>
+          <el-input id="email" class="input60" size="mini" v-model="infoData.email" @change="handleInfo" disabled></el-input>
         </el-form-item>
         <el-form-item label="室內電話" prop="telNumber">
-          <el-input id="telNumber" class="input60" size="mini" v-model="infoData.telNumber"></el-input>
+          <el-input id="telNumber" class="input60" size="mini" v-model="infoData.telNumber" @change="handleInfo"></el-input>
         </el-form-item>
         <el-form-item label="手機號碼" prop="phoneNumber">
-          <el-input id="phoneNumber" class="input60" size="mini" v-model="infoData.phoneNumber"></el-input>
+          <el-input id="phoneNumber" class="input60" size="mini" v-model="infoData.phoneNumber" @change="handleInfo"></el-input>
         </el-form-item>
         <el-form-item label="通信地址" prop="correspondenceAddress">
-          <el-input id="correspondenceAddress" size="mini" v-model="infoData.correspondenceAddress" @change="checkAddress"></el-input>
+          <el-input id="correspondenceAddress" size="mini" v-model="infoData.correspondenceAddress" @change="handleInfo"></el-input>
         </el-form-item>
         <el-form-item label="婚姻狀態" prop="marriage">
-          <el-radio-group id="marriage" v-model="infoData.marriage">
+          <el-radio-group id="marriage" v-model="infoData.marriage" @change="handleInfo">
             <el-radio label="single">未婚</el-radio>
             <el-radio label="married">已婚</el-radio>
             <el-radio label="divorced">离婚</el-radio>
@@ -55,7 +55,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="特殊身分">
-          <el-radio-group id="isSpecialStatus" v-model="infoData.isSpecialStatus">
+          <el-radio-group id="isSpecialStatus" v-model="infoData.isSpecialStatus" @change="handleInfo">
             <el-radio :label="0">否</el-radio>
             <el-radio :label="1">是</el-radio>
           </el-radio-group>
@@ -83,6 +83,7 @@
     data() {
       return {
         isSameAddress: false,
+        infoData: {},
         rules: {
           email: [required, email],
         },
@@ -112,20 +113,15 @@
       };
     },
     watch: {
-      infoData: {
+      basicData: {
         handler(value) {
-          this.setBasicData(value);
+          this.infoData = JSON.parse(JSON.stringify(value));
         },
         deep: true,
       },
     },
     computed: {
       ...mapGetters('personal', ['basicData', 'isEdit']),
-      infoData: {
-        get() {
-          return this.basicData;
-        },
-      },
       labelPosition() {
         if (process.browser) {
           return window.innerWidth > 768 ? 'left' : 'top';
@@ -134,7 +130,9 @@
     },
     methods: {
       ...mapActions('personal', ['setBasicData']),
-      checkAddress() {},
+      handleInfo() {
+        this.setBasicData(this.infoData);
+      },
     },
   };
 </script>

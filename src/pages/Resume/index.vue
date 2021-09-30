@@ -2,6 +2,9 @@
   <div class="ResumeWrapper">
     <div class="container">
       <Card title="上傳履歷">
+        <div class="resumeDesc">
+          敬請上傳您的履歷以及填妥以下資料，我們將會有專人與您聯絡。
+        </div>
         <div class="resumeArea" ref="resumeArea">
           <PreviewUpload :uploadFile="onUploadUserFile" @uploadCallback="onUploadCallback" @deleteCallback="onDeleteCallback" />
           <PreviewUpload :uploadFile="onUploadUserFile" @uploadCallback="onUploadCallback" @deleteCallback="onDeleteCallback" />
@@ -181,7 +184,11 @@
       };
     },
     computed: {
-      ...mapGetters(['industryCategoryTree', 'jobCatTree', 'areaLocalTree']),
+      ...mapGetters('common', [
+        'industryCategoryTree',
+        'jobCatTree',
+        'areaLocalTree',
+      ]),
       ...mapGetters('user', ['captchaCode']),
     },
     methods: {
@@ -230,7 +237,6 @@
           };
 
           this.$api('userRegister', payload).then(data => {
-            if (data.code != 100) return this.$message.error(data.message);
             this.$message.success('新增成功！請登入開始使用！');
             this.$router.replace('/');
           });
@@ -285,6 +291,10 @@
       .el-row {
         margin-bottom: 5px;
       }
+    }
+    .resumeDesc {
+      padding: 0 35px;
+      color: $primary;
     }
     .footer {
       text-align: center;

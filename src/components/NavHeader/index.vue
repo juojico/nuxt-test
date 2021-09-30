@@ -1,5 +1,5 @@
 <template>
-  <div class="headerWrapper">
+  <header class="headerWrapper">
     <div class="container">
       <div :class="{menuButtonArea: true, on: menuActive}" @click="toggleMenu">
         <div class="menuButton"></div>
@@ -7,7 +7,9 @@
       <div class="logo" @click="goto('/')"></div>
       <div :class="{mainMenuArea: true, on: menuActive}">
         <div class="mainMenu">
-          <div v-for="(item,index) in menu" :key="`mainMenuItem${index}`" class="item" @click="goto(item.path)">{{item.label}}</div>
+          <div v-if="!token" class="item" @click="goto('/resume')">上傳履歷</div>
+          <div class="item" @click="goto('/jobs')">職缺博覽會</div>
+          <div class="item" @click="goto('/article')">精選閱讀</div>
         </div>
 
         <!-- 登入 -->
@@ -35,31 +37,16 @@
         <div class="menuCloseButton" @click="toggleMenu"></div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import { logout } from '~/utils';
 
   export default {
     name: 'NavHeader',
     data() {
       return {
-        menu: [
-          {
-            label: '上傳履歷',
-            path: '/resume',
-          },
-          {
-            label: '職缺博覽會',
-            path: '/jobs',
-          },
-          {
-            label: '精選閱讀',
-            path: '/article',
-          },
-        ],
         memberMenu: [
           {
             label: '個人中心',
@@ -74,11 +61,11 @@
       ...mapGetters('user', ['token', 'userName']),
     },
     methods: {
-      ...mapActions('user', ['setToken']),
+      ...mapActions('user', ['logout']),
       ...mapActions('dialog', ['setLoginShow', 'setRegisterShow']),
       ...mapActions('article', ['setCategory', 'setCurrentId']),
       logoutClick() {
-        logout('userClick');
+        this.logout('userClick');
       },
       goto(path) {
         this.closeMenu();

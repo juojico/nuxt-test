@@ -1,9 +1,9 @@
 <template>
-  <div class="footerWrapper">
+  <footer class="footerWrapper">
     <div class="container">
       Copyright © 2021 STEP1NE. All rights reserved.
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>

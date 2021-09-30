@@ -47,10 +47,6 @@
           size: this.pageSize,
         };
         this.$api('userGetReferList', payload).then(data => {
-          if (data.code != 100) {
-            this.reset();
-            return this.$message.error(data.message);
-          }
           this.dataForInfoList = data.records;
           this.totalNum = data.total;
         });

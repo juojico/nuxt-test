@@ -1,3 +1,5 @@
+import { Message, MessageBox } from 'element-ui';
+
 // initial state
 const state = () => ({
   token: null,
@@ -65,8 +67,25 @@ const actions = {
       commit('SET_CAPTCHA_IMG', data.image);
     });
   },
-  logout({ commit }) {
+  logout({ commit }, type) {
     commit('CLEAR_LOGIN_TOKEN');
+    if (type === 'userClick') {
+      this.$api('userLogout');
+      this.$router.replace('/');
+      Message.success('帳號已登出');
+    } else if (type === 'reset') {
+      Message.success('密碼已重設，請重新登入');
+    }
+  },
+  loginFirst({ dispatch, getters }, callback) {
+    if (!getters['token']) {
+      return MessageBox('尚未登入, 請先登入', '', {
+        type: 'warning',
+      }).then(() => {
+        dispatch('dialog/setLoginShow', true, { root: true });
+      });
+    }
+    callback();
   },
 };
 

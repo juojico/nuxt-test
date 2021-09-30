@@ -40,7 +40,6 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex';
-  import { loginFirst } from '~/utils';
   import ContactBox from '~/components/ContactBox';
   import JobDetails from './components/JobDetails';
   import ApplyDialog from './components/ApplyDialog';
@@ -72,9 +71,9 @@
     methods: {
       ...mapActions('jobs', ['setCurrentJobId', 'setCurrentCompanyId']),
       ...mapActions('dialog', ['setLoginShow']),
-      ...mapActions('user', ['setReferCode']),
+      ...mapActions('user', ['setReferCode', 'loginFirst']),
       getJobDetail() {
-       this.$api('getJob', { id: this.currentJobId }).then(data => {
+        this.$api('getJob', { id: this.currentJobId }).then(data => {
           this.jobDetail = data;
           this.isFavorite = data.isFavorites;
         });
@@ -85,14 +84,14 @@
           jobPositionId: id,
           referCode: code,
         };
-       this.$api('accessShareJob', payload);
+        this.$api('accessShareJob', payload);
       },
       gotoCompany(id) {
         this.setCurrentCompanyId(id || 0);
         this.$router.push({ name: 'Company', query: { id } });
       },
       openApply() {
-        loginFirst(() => {
+        this.loginFirst(() => {
           this.$gtag.event('打開應徵彈窗', {
             event_category: '按鈕點擊',
             event_label: '打開應徵彈窗',
@@ -102,7 +101,7 @@
         });
       },
       openShare() {
-        loginFirst(() => {
+        this.loginFirst(() => {
           this.$gtag.event('打開分享職缺彈窗', {
             event_category: '按鈕點擊',
             event_label: '打開分享職缺彈窗',
@@ -113,11 +112,11 @@
         });
       },
       changeFavorite(id) {
-        loginFirst(() => {
+        this.loginFirst(() => {
           this.isFavorite = !this.isFavorite;
           const payload = { jobPositionId: id };
           if (this.isFavorite) {
-           this.$api('userAddFavoriteJob', payload);
+            this.$api('userAddFavoriteJob', payload);
             this.$message.success(`已收藏 ${this.jobDetail.title}`);
             this.$gtag.event('收藏職缺', {
               event_category: '按鈕點擊',
@@ -125,7 +124,7 @@
               value: `userName: ${this.userName}, jobTitle: ${this.jobDetail.title}`,
             });
           } else {
-           this.$api('userRemoveFavoriteJob', payload);
+            this.$api('userRemoveFavoriteJob', payload);
             this.$message.success(`已取消收藏 ${this.jobDetail.title}`);
             this.$gtag.event('取消收藏職缺', {
               event_category: '按鈕點擊',

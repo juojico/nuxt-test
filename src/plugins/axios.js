@@ -1,5 +1,4 @@
 import { Message } from 'element-ui';
-import { logout } from '@/utils';
 import download from 'downloadjs';
 
 export const BASE_URL =
@@ -14,9 +13,11 @@ export default function({ $axios, store, redirect }) {
   // setHeader
   $axios.setHeader('Content-Type', 'application/json');
 
-  let token = store.getters['user/token'];
-  if (token) {
-    $axios.setHeader('Authorization', 'Bearer ' + token);
+  if (process.client) {
+    let token = window.sessionStorage.getItem('_loginToken');
+    if (token) {
+      $axios.setHeader('Authorization', 'Bearer ' + token);
+    }
   }
 
   // onRequest
@@ -33,10 +34,6 @@ export default function({ $axios, store, redirect }) {
     if (response.status != 200 || response.data.code != 100) {
       Message.error(response.data.message);
       return Promise.reject(response.data.message);
-    }
-    if (response.data.code == 202) {
-      logout();
-      return Promise.reject('登入帳號過期，請重新登入');
     }
 
     return Promise.resolve(response.data);

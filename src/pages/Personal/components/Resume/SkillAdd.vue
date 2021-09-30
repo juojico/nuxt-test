@@ -45,7 +45,7 @@
       };
     },
     computed: {
-      ...mapGetters(['skillTree']),
+      ...mapGetters('common', ['skillTree']),
     },
     methods: {
       handleAddSkill(payload) {
